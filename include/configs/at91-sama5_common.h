@@ -60,6 +60,7 @@
 #define CONFIG_CMD_PING
 #define CONFIG_CMD_DHCP
 #define CONFIG_CMD_SETEXPR
+#define CONFIG_CMD_SPI
 
 #ifdef CONFIG_SYS_USE_MMC
 

@@ -515,6 +515,11 @@ config TARGET_SAMA5D3XEK
 	select CPU_V7
 	select SUPPORT_SPL
 
+config TARGET_ALC3_SAMA5D35
+	bool "Support alc3 sama5d35"
+	select CPU_V7
+	select SUPPORT_SPL
+
 config TARGET_SAMA5D4_XPLAINED
 	bool "Support sama5d4_xplained"
 	select CPU_V7
@@ -884,6 +889,7 @@ source "board/boundary/nitrogen6x/Kconfig"
 source "board/broadcom/bcm28155_ap/Kconfig"
 source "board/broadcom/bcmcygnus/Kconfig"
 source "board/broadcom/bcmnsp/Kconfig"
+source "board/calao/alc3_sama5d35/Kconfig"
 source "board/calao/sbc35_a9g20/Kconfig"
 source "board/calao/tny_a9260/Kconfig"
 source "board/calao/usb_a9263/Kconfig"

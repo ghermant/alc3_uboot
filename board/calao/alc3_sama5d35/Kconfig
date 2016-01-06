@@ -1,0 +1,15 @@
+if TARGET_ALC3_SAMA5D35
+
+config SYS_BOARD
+	default "alc3_sama5d35"
+
+config SYS_VENDOR
+	default "calao"
+
+config SYS_SOC
+	default "at91"
+
+config SYS_CONFIG_NAME
+	default "alc3_sama5d35"
+
+endif

@@ -105,6 +105,19 @@ void at91_spi0_hw_init(unsigned long cs_mask)
 	/* Enable clock */
 	at91_periph_clk_enable(ATMEL_ID_SPI0);
 }
+
+void at91_spi1_hw_init(unsigned long cs_mask)
+{
+	at91_set_a_periph(AT91_PIO_PORTC, 22, 0);       /* SPI1_MISO */
+	at91_set_a_periph(AT91_PIO_PORTC, 23, 0);       /* SPI1_MOSI */
+	at91_set_a_periph(AT91_PIO_PORTC, 24, 0);       /* SPI1_SPCK */
+
+	if (cs_mask & (1 << 0))
+		at91_set_pio_output(AT91_PIO_PORTC, 25, 1);
+
+	/* Enable clock */
+	at91_periph_clk_enable(ATMEL_ID_SPI1);
+}
 #endif
 
 #ifdef CONFIG_GENERIC_ATMEL_MCI
@@ -136,6 +149,7 @@ void at91_macb_hw_init(void)
 	at91_set_a_periph(AT91_PIO_PORTC, 2, 0);	/* ERX0 */
 	at91_set_a_periph(AT91_PIO_PORTC, 3, 0);	/* ERX1 */
 	at91_set_a_periph(AT91_PIO_PORTC, 6, 0);	/* ERXER */
+	at91_set_pio_pulldown(AT91_PIO_PORTC, 6, 1);	/* Enable PD on ERXER */
 	at91_set_a_periph(AT91_PIO_PORTC, 4, 0);	/* ETXEN */
 	at91_set_a_periph(AT91_PIO_PORTC, 0, 0);	/* ETX0 */
 	at91_set_a_periph(AT91_PIO_PORTC, 1, 0);	/* ETX1 */

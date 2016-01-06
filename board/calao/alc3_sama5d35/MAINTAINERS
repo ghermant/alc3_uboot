@@ -1,0 +1,7 @@
+ALc3_SAMA5D35 BOARD
+M:	Gregory Hermant <gregory.hermant@calao-systems.com>
+S:	Maintained
+F:	board/calao/alc3_sama5d35/
+F:	include/configs/sama5d35_alc3.h
+F:	configs/sama5d35_alc3_spiflash_defconfig
+

@@ -363,7 +363,8 @@ static int mmc_send_op_cond_iter(struct mmc *mmc, struct mmc_cmd *cmd,
 		cmd->cmdarg =
 			(mmc->cfg->voltages &
 			(mmc->op_cond_response & OCR_VOLTAGE_MASK)) |
-			(mmc->op_cond_response & OCR_ACCESS_MODE);
+			((mmc->op_cond_response & OCR_ACCESS_MODE) | 
+			OCR_ACCESS_SECTOR_MODE);
 
 		if (mmc->cfg->host_caps & MMC_MODE_HC)
 			cmd->cmdarg |= OCR_HCS;
