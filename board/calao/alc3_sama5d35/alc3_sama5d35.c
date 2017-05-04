@@ -412,8 +412,23 @@ int board_init(void)
 
 int dram_init(void)
 {
-	gd->ram_size = get_ram_size((void *)CONFIG_SYS_SDRAM_BASE,
-				    CONFIG_SYS_SDRAM_SIZE);
+	int ddr_settings;
+
+	ddr_settings = at91_get_pio_value(AT91_PIO_PORTC, 10);
+	ddr_settings |= at91_get_pio_value(AT91_PIO_PORTC, 16) << 1;
+	if (ddr_settings == 0)
+	    gd->ram_size = get_ram_size((void *)CONFIG_SYS_SDRAM_BASE,
+				        CONFIG_SYS_SDRAM_64M_SIZE);
+	else if (ddr_settings == 1)
+	    gd->ram_size = get_ram_size((void *)CONFIG_SYS_SDRAM_BASE,
+				        CONFIG_SYS_SDRAM_128M_SIZE);
+	else if (ddr_settings == 2)
+	    gd->ram_size = get_ram_size((void *)CONFIG_SYS_SDRAM_BASE,
+				        CONFIG_SYS_SDRAM_256M_SIZE);		
+	/* config not defined: DDR size mem set to 128MB */	
+	else if (ddr_settings == 3)
+	    gd->ram_size = get_ram_size((void *)CONFIG_SYS_SDRAM_BASE,
+				        CONFIG_SYS_SDRAM_128M_SIZE);	
 	return 0;
 }
 
